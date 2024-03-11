@@ -36,6 +36,7 @@ Public Class Form3
 
     Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
         MakeTurfBooking()
+        Form4.show()
     End Sub
 
     Private Sub MakeTurfBooking()
