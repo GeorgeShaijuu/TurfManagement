@@ -194,7 +194,7 @@ Partial Class Form2
         Guna2Button13.ShadowDecoration.CustomizableEdges = CustomizableEdges2
         Guna2Button13.Size = New Size(146, 32)
         Guna2Button13.TabIndex = 23
-        Guna2Button13.Text = "Report"
+        Guna2Button13.Text = "Logout"
         ' 
         ' Guna2Button3
         ' 

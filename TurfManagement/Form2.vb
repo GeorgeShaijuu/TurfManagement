@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Text
+Imports MySql.Data.MySqlClient
 
 Public Class Form2
     Private connectionString As String = "Server=localhost;Database=TurfManagement;User ID=root;Password=admin;"
@@ -127,5 +128,36 @@ Public Class Form2
 
     Private Sub Guna2Button7_Click(sender As Object, e As EventArgs) Handles Guna2Button7.Click
         Form3.Show()
+    End Sub
+
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+        Try
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim query As String = "SELECT * FROM Reports"
+                Using cmd As New MySqlCommand(query, connection)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        Dim reportData As New StringBuilder()
+
+                        ' Loop through the rows in the Reports table
+                        While reader.Read()
+                            ' Assuming you have TurfId, BookingId, and PaymentId columns in the Reports table
+                            Dim turfId As Integer = Convert.ToInt32(reader("TurfId"))
+                            Dim bookingId As Integer = Convert.ToInt32(reader("BookingId"))
+                            Dim paymentId As Integer = Convert.ToInt32(reader("PaymentId"))
+
+                            ' Append the data to the StringBuilder
+                            reportData.AppendLine($"ReportId: {reader("ReportId")}, TurfId: {turfId}, BookingId: {bookingId}, PaymentId: {paymentId}")
+                        End While
+
+                        ' Display the data in a MessageBox
+                        MessageBox.Show(reportData.ToString(), "Reports Data")
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
     End Sub
 End Class
