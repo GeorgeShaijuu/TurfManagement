@@ -124,4 +124,8 @@ Public Class Form2
     Private Sub Guna2Button13_Click(sender As Object, e As EventArgs) Handles Guna2Button13.Click
         Me.Close()
     End Sub
+
+    Private Sub Guna2Button7_Click(sender As Object, e As EventArgs) Handles Guna2Button7.Click
+        Form3.Show()
+    End Sub
 End Class
